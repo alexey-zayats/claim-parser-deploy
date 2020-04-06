@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+
+  claim-parser:
+    image: aazayats/claim-parser:latest
+    command: watch
+    restart: always
+    env_file:
+      - ${ENV}/claim-parser.env
+    networks:
+      - local
+    volumes:
+      - ${STORE}:/data/events
+
+networks:
+  local:
